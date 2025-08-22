@@ -6,7 +6,7 @@ st.title("Car Data Statistics")
 st.write("This application provides statistics on car data.")
 
 uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
-if uploaded_file is not None:
+if uploaded_file is  None:
     try:
         # Read the CSV file into a DataFrame
         car_data = pd.read_csv(uploaded_file)
@@ -31,7 +31,7 @@ if uploaded_file is not None:
         st.error(f"Error reading file: {e}")
 else:
     st.write("Please upload a CSV file to see the car data statistics.")
-    df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/mpg.csv")  # Example file for initial load
+    car_data = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/mpg.csv")  # Example file for initial load
 
 if st.checkbox("Show raw data"):
     st.write(car_data if 'car_data' in locals() else df)
